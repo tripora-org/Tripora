@@ -1,62 +1,72 @@
-body {
-  margin: 0;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(135deg, #6c63ff, #3f3d56);
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #fff;
-}
-
+/* App Container */
 .container {
-  background-color: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  padding: 50px;
-  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #ffffff; /* Weißer Hintergrund */
+  color: #000000; /* Schwarzer Text */
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  padding: 20px;
+  box-sizing: border-box;
   text-align: center;
-  width: 350px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
 }
 
-h1 {
-  margin-bottom: 10px;
-  font-size: 2.5rem;
+/* Titel & Slogan */
+.container h1 {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
 }
 
-p {
-  margin-bottom: 30px;
-  font-size: 1.2rem;
-  opacity: 0.9;
+.container p {
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
+  opacity: 0.8;
 }
 
+/* Login Form */
+.password-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 400px;
+  gap: 15px;
+}
+
+/* Input Felder */
 .password-form input {
-  padding: 12px;
-  width: 100%;
+  padding: 12px 15px;
   border-radius: 10px;
-  border: none;
-  margin-bottom: 15px;
+  border: 1px solid #000000;
   font-size: 1rem;
+  outline: none;
+  transition: border 0.2s;
 }
 
+.password-form input:focus {
+  border-color: #555555;
+}
+
+/* Button */
 .password-form button {
-  padding: 12px;
-  width: 100%;
+  padding: 12px 15px;
   border-radius: 10px;
   border: none;
-  background-color: #6c63ff;
-  color: white;
+  background-color: #000000;
+  color: #ffffff;
   font-size: 1rem;
   cursor: pointer;
-  transition: 0.3s;
+  transition: background-color 0.2s;
 }
 
 .password-form button:hover {
-  background-color: #5750d1;
+  background-color: #333333;
 }
 
+/* Fehlernachricht */
 .error {
-  margin-top: 10px;
-  color: #ff6b6b;
-  font-weight: bold;
+  color: #ff0000;
+  font-size: 0.9rem;
+  margin-top: -10px;
 }
