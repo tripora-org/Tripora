@@ -14,7 +14,7 @@ function App() {
   }, []);
 
   return (
-    <div className="min-h-screen flex flex-col bg-gray-50">
+    <div className="min-h-screen  flex flex-col bg-gray-50">
       <header className="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 tracking-tight">
           Tripora
