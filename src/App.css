@@ -1,72 +1,102 @@
-/* App Container */
+/* Gesamte Seite */
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  background-color: #1e1e1e; /* Dunkler Hintergrund */
+  color: #ffffff;
+}
+
+/* Container */
 .container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  background-color: #ffffff; /* Weißer Hintergrund */
-  color: #000000; /* Schwarzer Text */
-  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-  padding: 20px;
-  box-sizing: border-box;
   text-align: center;
+  padding: 20px;
 }
 
 /* Titel & Slogan */
 .container h1 {
-  font-size: 3rem;
+  font-size: 2.5rem;
   margin-bottom: 0.5rem;
 }
 
 .container p {
-  font-size: 1.25rem;
+  font-size: 1.2rem;
   margin-bottom: 2rem;
-  opacity: 0.8;
+  color: #bbbbbb; /* dezente Farbe für Slogan */
 }
 
-/* Login Form */
+/* Login Card */
 .password-form {
   display: flex;
-  flex-direction: column;
-  width: 100%;
-  max-width: 400px;
-  gap: 15px;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: #2a2a2a;
+  padding: 15px 20px;
+  border-radius: 30px;
+  max-width: 500px;
+  gap: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
 }
 
-/* Input Felder */
+/* Input Feld */
 .password-form input {
-  padding: 12px 15px;
-  border-radius: 10px;
-  border: 1px solid #000000;
+  flex: 1;
+  padding: 15px 20px;
+  border-radius: 25px;
+  border: none;
+  background-color: #3a3a3a;
+  color: #ffffff;
   font-size: 1rem;
   outline: none;
-  transition: border 0.2s;
 }
 
-.password-form input:focus {
-  border-color: #555555;
+.password-form input::placeholder {
+  color: #888888;
 }
 
 /* Button */
 .password-form button {
-  padding: 12px 15px;
-  border-radius: 10px;
+  padding: 15px 25px;
+  border-radius: 25px;
   border: none;
-  background-color: #000000;
-  color: #ffffff;
+  background-color: #ffffff;
+  color: #1e1e1e;
+  font-weight: bold;
   font-size: 1rem;
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: 0.2s all;
 }
 
 .password-form button:hover {
-  background-color: #333333;
+  background-color: #dddddd;
 }
 
 /* Fehlernachricht */
 .error {
-  color: #ff0000;
+  color: #ff5555;
+  margin-top: 10px;
   font-size: 0.9rem;
-  margin-top: -10px;
+}
+
+/* Request Password Link */
+.request-password {
+  margin-top: 15px;
+  font-size: 0.85rem;
+  color: #888888;
+}
+
+.request-password a {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+.request-password a:hover {
+  color: #bbbbbb;
 }
