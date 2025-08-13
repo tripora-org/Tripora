@@ -5,5 +5,5 @@ import tailwindcss from '@tailwindcss/vite'
 
 export default defineConfig({
   plugins: [react(), tailwindcss()],
-  base: '/Tripora/', // genau wie Ihr Repo heißt
+  base: '/', // genau wie Ihr Repo heißt
 })
