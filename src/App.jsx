@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "./firebaseConfig";
-import Login from "./Login";
+import { auth } from "../firebaseConfig";
+import Login from "./Components/Login";
 import "./App.css";
 
 function App() {

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../firebaseConfig";  // ../ weil Login in components liegt
+import { auth } from "../../firebaseConfig";  // ../ weil Login in components liegt
 
 export default function Login({ onSuccess }) {
   const [email, setEmail] = useState("");
