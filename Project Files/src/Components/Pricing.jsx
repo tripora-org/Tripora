@@ -19,7 +19,7 @@ const plans = [
   },
   {
     name: 'Yearly',
-    price: '€29',
+    price: '€24,99',
     billing: 'per year',
     features: [
       'More than 5 users per group',
