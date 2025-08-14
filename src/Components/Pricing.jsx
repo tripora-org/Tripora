@@ -5,7 +5,7 @@ import { FaCheck } from 'react-icons/fa';
 const plans = [
   {
     name: 'Free',
-    price: '$0',
+    price: '€0',
     billing: 'forever',
     features: [
       'Up to 5 users per group',
@@ -19,7 +19,7 @@ const plans = [
   },
   {
     name: 'Yearly',
-    price: '$99',
+    price: '€29',
     billing: 'per year',
     features: [
       'More than 5 users per group',
@@ -35,7 +35,7 @@ const plans = [
   },
   {
     name: 'Monthly',
-    price: '$10',
+    price: '€2,99',
     billing: 'per month',
     features: [
       'More than 5 users per group',
