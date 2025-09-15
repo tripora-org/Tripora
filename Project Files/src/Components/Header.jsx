@@ -106,11 +106,11 @@ const Header = () => {
               <FaInstagram size={20} />
             </a>
             <motion.button
+              href="#download"
+              onClick={handleSignOut}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              onClick={handleSignOut}
-              className="bg-blue-600 text-white px-4 py-2 rounded-full font-medium hover:bg-blue-700 transition-colors duration-300"
-            >
+              className="inline-block bg-gray-900 text-white px-6 py-2 rounded-md font-medium text-base hover:bg-gray-800 transition-colors duration-300">
               Sign Out
             </motion.button>
           </div>
