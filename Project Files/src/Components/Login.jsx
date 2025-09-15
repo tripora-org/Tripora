@@ -39,7 +39,7 @@ export default function Login({ onSuccess }) {
       />
       <button
         onClick={handleLogin}
-        className="w-full px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-300 text-base transition-all duration-200"
+        className="w-full px-6 py-3 bg-gray-900 text-white font-semibold rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-300 text-base transition-all duration-200"
       >
         Sign In
       </button>
