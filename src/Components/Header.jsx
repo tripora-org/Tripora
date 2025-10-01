@@ -33,22 +33,44 @@ const Header = () => {
     }
   };
 
+  // Variants for subtler animations
+  const headerVariants = {
+    hidden: { opacity: 0, scale: 0.95 },
+    visible: { opacity: 1, scale: 1, transition: { duration: 0.6, ease: 'easeOut' } },
+  };
+
+  const menuVariants = {
+    hidden: { opacity: 0, y: -20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: 'easeOut' } },
+    exit: { opacity: 0, y: -20, transition: { duration: 0.3 } },
+  };
+
+  const staggerContainer = {
+    hidden: {},
+    visible: { transition: { staggerChildren: 0.1, delayChildren: 0.2 } },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, scale: 0.95 },
+    visible: { opacity: 1, scale: 1, transition: { duration: 0.3 } },
+  };
+
   return (
     <motion.header
-    initial={{ opacity: 0, y: -50 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.6, ease: 'easeOut' }}
-    className={`fixed top-0 left-0 right-0 z-50 py-4 transition-all duration-300 ${
-      scrolled
-        ? 'bg-white/10 backdrop-blur-2xl border-b border-white/20 shadow-lg'
-        : 'bg-white/5 backdrop-blur-xl'
-    }`}
-  >
-      <div className="container mx-auto px-6 flex justify-between items-center">
-        {/* Logo with Glass Effect */}
+      variants={headerVariants}
+      initial="hidden"
+      animate="visible"
+      className={`fixed top-2 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-2rem)] max-w-7xl rounded-4xl py-3 transition-all duration-300 ${
+        scrolled
+          ? 'bg-white/15 backdrop-blur-2xl border-b border-white/0 shadow-lg'
+          : 'bg-white/5 backdrop-blur-xl'
+      }`}
+    >
+      <div className="mx-auto px-6 sm:px-6 flex justify-between items-center">
+        {/* Logo with Smooth Hover */}
         <motion.div 
           className="flex flex-col"
-          whileHover={{ scale: 1.05 }}
+          whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
         >
           <span className="text-lg font-large text-white/70">Tripora</span>
           <span className="text-sm font-medium text-white/70">Together. Anywhere.</span>
@@ -58,9 +80,9 @@ const Header = () => {
         <div className="flex items-center md:hidden">
           <motion.button
             whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
+            whileTap={{ scale: 0.95 }}
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="p-2 bg-white/10 backdrop-blur-20 border border-white/20 rounded-xl text-white hover:bg-white/20 transition-all duration-300"
+            className="p-2 bg-white/10 backdrop-blur-lg border border-white/20 rounded-xl text-white hover:bg-white/20 transition-all duration-300"
           >
             {isMenuOpen ? <FaTimes size={20} /> : <FaBars size={20} />}
           </motion.button>
@@ -75,30 +97,30 @@ const Header = () => {
                 href={`#${item.toLowerCase()}`}
                 onClick={(e) => handleScroll(e, `#${item.toLowerCase()}`)}
                 className="text-white/80 hover:text-teal-300 font-medium transition-colors duration-300 relative"
-                whileHover={{ y: -2 }}
-                initial={{ opacity: 0, y: 20 }}
+                whileHover={{ scale: 1.05, y: -1 }}
+                initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
+                transition={{ duration: 0.4, delay: index * 0.05 }}
               >
                 {item}
                 <motion.div
                   className="absolute bottom-0 left-0 w-full h-0.5 bg-teal-300 origin-left"
                   initial={{ scaleX: 0 }}
                   whileHover={{ scaleX: 1 }}
-                  transition={{ duration: 0.3 }}
+                  transition={{ duration: 0.25, ease: 'easeInOut' }}
                 />
               </motion.a>
             ))}
           </nav>
 
           <div className="flex items-center space-x-4">
-            {/* Social Icons */}
+            {/* Social Icons with Fade Hover */}
             <motion.a
               href="https://x.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2 bg-white/10 backdrop-blur-20 border border-white/20 rounded-xl text-white/80 hover:text-teal-300 hover:bg-white/20 transition-all duration-300"
-              whileHover={{ scale: 1.1 }}
+              className="p-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-xl text-white/80 hover:text-teal-300 hover:bg-white/20 transition-all duration-300"
+              whileHover={{ scale: 1.1, opacity: 0.9 }}
             >
               <FaTwitter size={18} />
             </motion.a>
@@ -106,13 +128,13 @@ const Header = () => {
               href="https://instagram.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2 bg-white/10 backdrop-blur-20 border border-white/20 rounded-xl text-white/80 hover:text-teal-300 hover:bg-white/20 transition-all duration-300"
-              whileHover={{ scale: 1.1 }}
+              className="p-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-xl text-white/80 hover:text-teal-300 hover:bg-white/20 transition-all duration-300"
+              whileHover={{ scale: 1.1, opacity: 0.9 }}
             >
               <FaInstagram size={18} />
             </motion.a>
 
-            {/* Sign Out Button */}
+            {/* Sign Out Button with Scale */}
             <motion.button
               onClick={handleSignOut}
               whileHover={{ scale: 1.05 }}
@@ -125,24 +147,31 @@ const Header = () => {
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu with Click Outside Close */}
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: '-100%' }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: '-100%' }}
-            transition={{ duration: 0.4, ease: 'easeOut' }}
-            className="md:hidden fixed top-0 left-0 right-0 bg-black/20 backdrop-blur-30 z-40 pt-20 pb-8 px-6 min-h-screen"
+            variants={menuVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+            onClick={() => setIsMenuOpen(false)} // Close on outside click
+            className="md:hidden fixed top-0 left-0 right-0 bg-black/20 backdrop-blur-2xl z-40 pt-20 pb-8 px-6 min-h-screen"
           >
-            <div className="bg-white/5  backdrop-blur-2xl rounded-2xl border border-white/20 p-6">
-              <nav className="flex flex-col space-y-6 text-center">
-                {['Features', 'FAQ', 'Pricing', 'Contact'].map((item, index) => (
+            <div 
+              className="bg-white/15 backdrop-blur-2xl border-b shadow-lg rounded-2xl border border-white/20 p-6"
+              onClick={(e) => e.stopPropagation()} // Prevent close on inner click
+            >
+              <motion.nav 
+                className="flex flex-col space-y-6 text-center "
+                variants={staggerContainer}
+                initial="hidden"
+                animate="visible"
+              >
+                {['Features', 'FAQ', 'Pricing', 'Contact'].map((item) => (
                   <motion.a
                     key={item}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: index * 0.1 }}
+                    variants={itemVariants}
                     href={`#${item.toLowerCase()}`}
                     onClick={(e) => handleScroll(e, `#${item.toLowerCase()}`)}
                     className="text-white/90 hover:text-teal-300 font-medium text-lg transition-colors duration-300"
@@ -162,14 +191,12 @@ const Header = () => {
                 
                 <motion.button
                   onClick={handleSignOut}
+                  variants={itemVariants}
                   className="bg-gradient-to-r from-teal-400 to-cyan-400 text-white px-6 py-3 rounded-xl font-semibold transition-all duration-300 mt-4"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.5 }}
                 >
                   Sign Out
                 </motion.button>
-              </nav>
+              </motion.nav>
             </div>
           </motion.div>
         )}
